@@ -13,6 +13,10 @@ const ChecklistNote = ({ note, onDeleteNote }) => {
     }
   };
 
+  const handleDeleteItem = (id) => {
+    setItems((prevItems) => prevItems.filter((item) => item.id !== id));
+  };
+
   const handleToggleItem = (id) => {
     setItems((prevItems) =>
       prevItems.map((item) =>
@@ -44,7 +48,7 @@ const ChecklistNote = ({ note, onDeleteNote }) => {
 
       <ScrollView>
         {items.map((item) => (
-          <Checklist key={item.id} item={item} onToggle={handleToggleItem} />
+          <Checklist key={item.id} item={item} onToggle={handleToggleItem} onDelete={handleDeleteItem} />
         ))}
       </ScrollView>
     </View>
@@ -68,6 +72,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     padding: 8,
   },
+  button: {
+    marginVertical: 8,
+  }
 });
 
 export default ChecklistNote;

@@ -47,6 +47,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     padding: 8,
   },
+  button: {
+    marginBottom: 5,
+  },
 });
 
 export default NotesManager;
