@@ -35,16 +35,18 @@ const ChecklistNote = ({ note, onDeleteNote }) => {
   return (
     <View style={styles.noteContainer}>
     <Text style={styles.title}>{note.title}</Text>
-      <Button title="Delete Note" onPress={() => onDeleteNote(note.id)} />
+    <View style={styles.noteInput}>
       <TextInput
         placeholder="New To-Do"
         value={newItem}
         onChangeText={setNewItem}
         style={styles.input}
       />
-      
-      <Button title="Add to-do" onPress={handleAddItem} />
-      
+      <Button title="+" onPress={handleAddItem} />
+    </View>
+
+      <Button title="Delete Note" onPress={() => onDeleteNote(note.id)} />
+
       <View style={styles.buttonRow}>
         <Button title="Check All" onPress={() => handleMassToggle(true)} />
         <Button title="Uncheck All" onPress={() => handleMassToggle(false)} />
@@ -76,6 +78,11 @@ const styles = StyleSheet.create({
     padding: 16,
     borderColor: '#ccc',
     borderWidth: 1,
+  },
+  noteInput: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 5,
   },
   title: {
     fontSize: 20,
