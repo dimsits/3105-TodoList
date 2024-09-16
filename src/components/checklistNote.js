@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
   dropdownToggle: {
     marginVertical: 8,
     padding: 5,
-    backgroundColor: '#D3D3D3',
+    backgroundColor: '#007BFF',
     alignItems: 'center',
   },
   dropdownToggleText: {
