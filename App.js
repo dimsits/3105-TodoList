@@ -1,11 +1,11 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
-import ChecklistNotesManager from './src/components/notesManager';
+import NotesManager from './src/components/notesManager';
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <ChecklistNotesManager />
+      <NotesManager />
     </SafeAreaView>
   );
 }
