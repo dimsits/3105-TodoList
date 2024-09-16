@@ -5,7 +5,7 @@ import Checklist from './checklist';
 const ChecklistNote = ({ note, onDeleteNote }) => {
   const [items, setItems] = useState([]);
   const [newItem, setNewItem] = useState('');
-  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const [isDropdownVisible, setIsDropdownVisible] = useState(true);
 
   const handleAddItem = () => {
     if (newItem.trim()) {
@@ -42,7 +42,9 @@ const ChecklistNote = ({ note, onDeleteNote }) => {
         onChangeText={setNewItem}
         style={styles.input}
       />
-      <Button title="+" onPress={handleAddItem} />
+      <TouchableOpacity style={styles.addButton} onPress={handleAddItem}>
+          <Text style={styles.addButtonText}>+</Text>
+        </TouchableOpacity>
     </View>
 
       <Button title="Delete Note" onPress={() => onDeleteNote(note.id)} />
@@ -83,6 +85,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 5,
+    width: '95%',
   },
   title: {
     fontSize: 20,
@@ -90,12 +93,22 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   input: {
+    flex: 1,
     marginBottom: 8,
     borderBottomWidth: 1,
     padding: 8,
   },
   button: {
     marginVertical: 8,
+  },
+  addButton: {
+    width: 50, // Fixed width for the button
+    height: 40,
+    backgroundColor: '#007BFF',
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 8, // Space between the input and the button
   },
   buttonRow: {
     flexDirection: 'row', // Aligns buttons horizontally
