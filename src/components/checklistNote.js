@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { View, Button, TextInput, StyleSheet, ScrollView, Text } from 'react-native';
+import { View, Button, TextInput, StyleSheet, ScrollView, Text, TouchableOpacity } from 'react-native';
 import Checklist from './checklist';
 
 const ChecklistNote = ({ note, onDeleteNote }) => {
   const [items, setItems] = useState([]);
   const [newItem, setNewItem] = useState('');
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
   const handleAddItem = () => {
     if (newItem.trim()) {
@@ -41,16 +42,30 @@ const ChecklistNote = ({ note, onDeleteNote }) => {
         onChangeText={setNewItem}
         style={styles.input}
       />
+      
       <Button title="Add to-do" onPress={handleAddItem} />
+      
+      <View style={styles.buttonRow}>
+        <Button title="Check All" onPress={() => handleMassToggle(true)} />
+        <Button title="Uncheck All" onPress={() => handleMassToggle(false)} />
+      </View>
 
-      <Button title="Check All" onPress={() => handleMassToggle(true)} />
-      <Button title="Uncheck All" onPress={() => handleMassToggle(false)} />
+      <TouchableOpacity
+        style={styles.dropdownToggle}
+        onPress={() => setIsDropdownVisible(!isDropdownVisible)}
+      >
+        <Text style={styles.dropdownToggleText}>
+          {isDropdownVisible ? 'Hide' : 'Show'}
+        </Text>
+      </TouchableOpacity>
 
-      <ScrollView>
-        {items.map((item) => (
-          <Checklist key={item.id} item={item} onToggle={handleToggleItem} onDelete={handleDeleteItem} />
-        ))}
-      </ScrollView>
+      {isDropdownVisible && (
+        <ScrollView>
+          {items.map((item) => (
+            <Checklist key={item.id} item={item} onToggle={handleToggleItem} onDelete={handleDeleteItem} />
+          ))}
+        </ScrollView>
+      )}
     </View>
   );
 };
@@ -74,7 +89,21 @@ const styles = StyleSheet.create({
   },
   button: {
     marginVertical: 8,
-  }
+  },
+  buttonRow: {
+    flexDirection: 'row', // Aligns buttons horizontally
+    justifyContent: 'space-between', // Adds space between buttons
+    marginVertical: 8,
+  },
+  dropdownToggle: {
+    marginVertical: 8,
+    padding: 5,
+    backgroundColor: '#D3D3D3',
+    alignItems: 'center',
+  },
+  dropdownToggleText: {
+    fontSize: 12,
+  },
 });
 
 export default ChecklistNote;
