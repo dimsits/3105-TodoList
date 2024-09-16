@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#6200ea',
     elevation: 8,
     zIndex: 10,
+    backgroundColor: "#ffffff"
   },
   modalContainer: {
     flex: 1,
@@ -120,6 +121,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
+    backgroundColor: '##191970'
   },
   scrollContainer: {
     paddingBottom: 80,

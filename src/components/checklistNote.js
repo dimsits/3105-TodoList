@@ -80,26 +80,32 @@ const styles = StyleSheet.create({
     padding: 16,
     borderColor: '#ccc',
     borderWidth: 1,
+    borderRadius: 10, // Add borderRadius to curve the corners
+    backgroundColor: '#000080', // Navy blue background color
   },
   noteInput: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 5,
     width: '95%',
+    color:'#FFFFFF',
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 8,
+    color: '#FFFFFF',
   },
   input: {
     flex: 1,
     marginBottom: 8,
     borderBottomWidth: 1,
     padding: 8,
+    color: '#ffffff',
   },
   button: {
     marginVertical: 8,
+    borderRadius: 10,
   },
   addButton: {
     width: 50, // Fixed width for the button
@@ -123,6 +129,7 @@ const styles = StyleSheet.create({
   },
   dropdownToggleText: {
     fontSize: 12,
+    color: '#FFFFFF',
   },
 });
 
